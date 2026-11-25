@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-slate-bg: #0B0F17;
+    --color-slate-panel: #121824;
+    --color-slate-card: #1B2436;
+    --color-slate-border: #2A364F;
+    --color-flame-primary: #D97757;
+    --color-flame-glow: #E2896B;
+  }
+
+  body {
+    background-color: #0B0F17;
+    color: #F0F4F8;
+    font-family: 'Mona Sans', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A364F;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D97757;
+}
+
+/* Glass & Slate Glow Card Utility */
+.slate-glass-card {
+  background: linear-gradient(135deg, rgba(18, 24, 36, 0.95) 0%, rgba(27, 36, 54, 0.8) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid #2A364F;
+}
+
+.slate-glass-card:hover {
+  border-color: rgba(217, 119, 87, 0.4);
+  box-shadow: 0 4px 25px -4px rgba(217, 119, 87, 0.15);
+}
+
+.flame-border-glow {
+  border-color: #D97757;
+  box-shadow: 0 0 15px rgba(217, 119, 87, 0.3);
+}
+
+/* Monospaced Grid Texture overlay */
+.bg-hud-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(42, 54, 79, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 54, 79, 0.15) 1px, transparent 1px);
+}
+
+/* Cyberpunk & Hallucination Glitch Ghost Text Effect */
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 50% 0); transform: translate(-4px, 2px); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(4px, -2px); }
+  40% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 4px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(3px, 1px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(-3px, -3px); }
+  100% { clip-path: inset(30% 0 20% 0); transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(4px, -2px); }
+  20% { clip-path: inset(70% 0 20% 0); transform: translate(-4px, 2px); }
+  40% { clip-path: inset(30% 0 50% 0); transform: translate(2px, -3px); }
+  60% { clip-path: inset(50% 0 15% 0); transform: translate(-2px, 3px); }
+  80% { clip-path: inset(5% 0 85% 0); transform: translate(3px, -1px); }
+  100% { clip-path: inset(40% 0 35% 0); transform: translate(-1px, -2px); }
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  left: 3px;
+  text-shadow: -3px 0 #D97757, 0 0 15px rgba(217, 119, 87, 0.6);
+  animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+  color: #00F0FF;
+  opacity: 0.75;
+}
+
+.glitch-text::after {
+  left: -3px;
+  text-shadow: 3px 0 #FF0055, 0 0 15px rgba(255, 0, 85, 0.6);
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+  color: #E2896B;
+  opacity: 0.75;
+}
+
+/* Ghost Telemetry Scanline Effect */
+.ghost-scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(217, 119, 87, 0) 0%,
+    rgba(217, 119, 87, 0.15) 50%,
+    rgba(217, 119, 87, 0) 100%
+  );
+  height: 8px;
+  animation: scanline 4s linear infinite;
+}
+
+/* Dark Mode Select and Option Strict Contrast Enforcement */
+select {
+  background-color: #0F172A;
+  color: #F1F5F9;
+}
+
+select option {
+  background-color: #0F172A !important;
+  color: #F1F5F9 !important;
+  padding: 6px 10px;
+}
+
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: #1E293B !important;
+  color: #D97757 !important;
+}
